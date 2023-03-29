@@ -1,0 +1,11 @@
+POST http://localhost:80/pet HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Rodolfo",
+    "age": 7,
+    "animalType": "Dog",
+    "breed": "Charpey",
+    "size": "Small",
+    "mood": "Calm"
+}
