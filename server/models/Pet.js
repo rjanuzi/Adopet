@@ -1,20 +1,12 @@
 class Pet {
-  constructor(
-    name,
-    age,
-    animalType,
-    breed,
-    size,
-    mood,
-    entryDate = new Date()
-  ) {
+  constructor({ name, age, animalType, breed, size, mood }) {
     this.name = name;
     this.age = age;
     this.animalType = animalType;
     this.breed = breed;
     this.size = size;
     this.mood = mood;
-    this.entryDate = entryDate;
+    this.entryDate = new Date();
   }
 }
 
