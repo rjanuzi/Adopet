@@ -17,7 +17,7 @@ try {
   await cliente.connect();
 
   const db = cliente.db(dbConfig.db);
-  petsCollection = db.collection("pets");
+  petsCollection = db.collection("Pets");
 
   console.log("Conectado ao banco de dados com sucesso!");
 } catch (erro) {
