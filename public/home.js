@@ -30,8 +30,6 @@ function fillPetsTable(pets) {
   });
 
   pets_table.innerHTML = tableHtml;
-
-  console.log(tableHtml);
 }
 
 getPets().then((res) => fillPetsTable(res));

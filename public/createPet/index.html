@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+
+    <title>AdoPet</title>
+  </head>
+
+  <body class="col-lg-6 my-3 mx-auto">
+    <header>
+      <h1 class="text-center display-2 mb-4">Create Pet</h1>
+    </header>
+
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputName"
+            placeholder="Name"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAge">Age</label>
+          <input
+            type="number"
+            class="form-control"
+            id="inputAge"
+            placeholder="Age"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputAnimalType">Animal Type</label>
+          <select id="inputAnimalType" class="form-control">
+            <option selected>Choose...</option>
+            <option>Dog</option>
+            <option>Cat</option>
+            <option>Lion</option>
+            <option>Snake</option>
+            <option>Bear</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputBreed">Breed</label>
+          <select id="inputBreed" class="form-control">
+            <option selected>Choose...</option>
+            <option>Vira-Lata</option>
+            <option>Basse</option>
+            <option>Labrador</option>
+            <option>Pug</option>
+            <option>Sphynx</option>
+            <option>Pardo</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputSize">Size</label>
+          <select id="inputSize" class="form-control">
+            <option selected>Choose...</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputMood">Mood</label>
+          <select id="inputMood" class="form-control">
+            <option selected>Choose...</option>
+            <option>Calm</option>
+            <option>Infernal</option>
+            <option></option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <button class="btn btn-primary" id="create-btn">Create</button>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="createPet.js" type="module"></script>
+  </body>
+</html>
