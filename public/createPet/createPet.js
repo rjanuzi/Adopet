@@ -24,7 +24,6 @@ async function fillForm(petId) {
 
   console.log(petData);
 
-  // TODO -- Fill form with PetData
   inputName.value = petData.name;
   inputAge.value = petData.age;
   inputAnimalType.value = petData.animalType;
@@ -32,6 +31,14 @@ async function fillForm(petId) {
   inputSize.value = petData.size;
   inputMood.value = petData.mood;
 }
+
+function processResult(result) {
+  if (result) {
+    window.location.href = "/";
+  } else {
+    console.log(`Deu ruim: ${result}`);
+  }
+}  
 
 /* Configure page for create or update Pet */
 function configPage() {
@@ -79,8 +86,8 @@ function formToObject() {
   return newPetData;
 }
 
-async function createPet() {
-  const response = await fetch("/pets", {
+async function postFormData(url) {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -90,20 +97,14 @@ async function createPet() {
   });
   const result = await response.json();
   return result.result;
+};
+
+async function createPet() {
+  return postFormData("/pets");
 }
 
 async function savePet() {
-  //TODO
-  // const response = await fetch("/pets", {
-  //   method: "POST",
-  //   headers: {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(formToObject()),
-  // });
-  // const result = await response.json();
-  // return result.result;
+  return postFormData(`/pets/${petId}`);
 }
 
 addEventListener("load", (event) => {
