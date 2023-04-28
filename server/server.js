@@ -4,7 +4,7 @@ import path from "path";
 import { petsCollection } from "./db/dbConnect.js";
 import { ObjectId } from "mongodb";
 
-const PORT = process.env.PORT || 81;
+const PORT = process.env.PORT || 80;
 const app = express();
 
 const currentPath = url.fileURLToPath(import.meta.url);
@@ -15,9 +15,10 @@ app.use(express.static(publicFolder));
 app.use(express.json());
 
 app.post("/pets/:petId?", async (req, res) => {
+  const petId = req.params.petId;
   let result;
   if (petId) {
-    result = await petsCollection.updateOne({ _id: new ObjectId(petId) }, req.body);
+    result = await petsCollection.updateOne({ _id: new ObjectId(petId) }, {$set:req.body});
   } else {
     result = await petsCollection.insertOne(req.body);
   }
