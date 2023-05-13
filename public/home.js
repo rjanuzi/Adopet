@@ -14,18 +14,17 @@ function fillPetsTable(pets) {
   const pets_table = document.getElementById("pets_table_body");
   pets_table.innerHTML = "";
 
-  console.log(pets);
 
   let tableHtml = "";
   pets.forEach((pet) => {
-    console.log(pet);
     tableHtml += `<tr>
-                      <td>${pet.name}</td>
-                      <td>${pet.animalType}</td>
-                      <td>${pet.age}</td>
-                      <td>${pet.breed}</td>
-                      <td>${pet.size}</td>
-                      <td>${pet.mood}</td>
+                      <td class="align-middle">${pet.name}</td>
+                      <td class="align-middle">${pet.animalType}</td>
+                      <td class="align-middle">${pet.age}</td>
+                      <td class="align-middle">${pet.breed}</td>
+                      <td class="align-middle">${pet.size}</td>
+                      <td class="align-middle">${pet.mood}</td>
+                      <td class="text-center"><a class="btn btn-primary" href="createPet/${pet._id}">Edit</a></td>
                   </tr>`;
   });
 
