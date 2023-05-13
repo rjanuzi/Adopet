@@ -44,6 +44,13 @@ app.get("/createPet/:petId?", (req, res) => {
   res.sendFile(path.join(publicFolder, "createPet/createPet.html"));
 });
 
+app.delete("/pets/:petId?", async (req, res) => {
+  const petId = req.params.petId;
+  let result = await petsCollection.deleteOne({ _id: new ObjectId(petId)});
+  res.send({ result: result.acknowledged });
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+

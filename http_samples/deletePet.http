@@ -1,0 +1,2 @@
+DELETE http://localhost:80/pets/644c48697d5036d3b8b029b1 HTTP/1.1
+Content-Type: application/json
