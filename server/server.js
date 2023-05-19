@@ -12,11 +12,13 @@ const publicFolder = path.join(currentPath, "../..", "public");
 app.use(express.static(publicFolder));
 
 /* Auto convert body to JSON */
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 
 app.post("/pets/:petId?", async (req, res) => {
   const petId = req.params.petId;
   let result;
+  console.log(req.body);
   if (petId) {
     result = await petsCollection.updateOne({ _id: new ObjectId(petId) }, {$set:req.body});
   } else {

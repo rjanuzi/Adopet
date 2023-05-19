@@ -8,6 +8,7 @@ const inputAnimalType = document.getElementById("inputAnimalType");
 const inputBreed = document.getElementById("inputBreed");
 const inputSize = document.getElementById("inputSize");
 const inputMood = document.getElementById("inputMood");
+const inputPhoto = document.getElementById("animalPhoto");
 const createBtn = document.getElementById("create-btn");
 const saveBtn = document.getElementById("save-btn");
 
@@ -21,8 +22,6 @@ async function fillForm(petId) {
     },
   });
   const petData = await response.json();
-
-  console.log(petData);
 
   inputName.value = petData.name;
   inputAge.value = petData.age;
@@ -74,26 +73,35 @@ function configPage() {
 }
 
 function formToObject() {
-  const newPetData = {
-    name: inputName.value,
-    age: inputAge.value,
-    animalType: inputAnimalType.value,
-    breed: inputBreed.value,
-    size: inputSize.value,
-    mood: inputMood.value,
-  };
-
-  return newPetData;
+  return new Promise(function(resolve,reject){
+    let reader = new FileReader();
+    reader.onload = function(){
+      const newPetData = {
+        name: inputName.value,
+        age: inputAge.value,
+        animalType: inputAnimalType.value,
+        breed: inputBreed.value,
+        size: inputSize.value,
+        mood: inputMood.value,
+        photo: reader.result
+      };
+      console.log(newPetData);
+      resolve(newPetData);
+    }
+    reader.readAsDataURL(inputPhoto.files[0]);
+    
+  });
 }
 
 async function postFormData(url) {
+  const formData = await formToObject();
   const response = await fetch(url, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formToObject()),
+    body: JSON.stringify(formData),
   });
   const result = await response.json();
   return result.result;
