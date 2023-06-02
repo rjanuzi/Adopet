@@ -37,7 +37,7 @@ function processResult(result) {
   } else {
     console.log(`Deu ruim: ${result}`);
   }
-}  
+}
 
 /* Configure page for create or update Pet */
 function configPage() {
@@ -73,9 +73,9 @@ function configPage() {
 }
 
 function formToObject() {
-  return new Promise(function(resolve,reject){
+  return new Promise(function (resolve, reject) {
     let reader = new FileReader();
-    reader.onload = function(){
+    reader.onload = function () {
       const newPetData = {
         name: inputName.value,
         age: inputAge.value,
@@ -83,13 +83,11 @@ function formToObject() {
         breed: inputBreed.value,
         size: inputSize.value,
         mood: inputMood.value,
-        photo: reader.result
+        photo: reader.result,
       };
-      console.log(newPetData);
       resolve(newPetData);
-    }
+    };
     reader.readAsDataURL(inputPhoto.files[0]);
-    
   });
 }
 
@@ -105,7 +103,7 @@ async function postFormData(url) {
   });
   const result = await response.json();
   return result.result;
-};
+}
 
 async function createPet() {
   return postFormData("/pets");
